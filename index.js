@@ -1,4 +1,5 @@
 
+
 const readline = require('readline');
 const { generatePassword } = require('./passwordGenerator');
 
@@ -13,10 +14,11 @@ function displayHelp() {
   console.log(`
     Password Generator CLI
     Usage:
-      node index.js --length <length>
+      node index.js --length <length> [--numbers]
     
     Options:
       --length <length>    Specify the length of the password (default is 8).
+      --numbers            Include numbers in the password.
       --help               Show this help message.
   `);
 }
@@ -24,6 +26,7 @@ function displayHelp() {
 
 const args = process.argv.slice(2);
 let length = 8;
+let includeNumbers = false;
 
 // Flags
 if (args.includes('--help')) {
@@ -35,6 +38,8 @@ if (args.includes('--help')) {
     if (arg.startsWith('--length')) {
       const index = args.indexOf(arg) + 1;
       length = parseInt(args[index], 10);
+    } else if (arg === '--numbers') {
+      includeNumbers = true;
     }
   });
 
@@ -45,8 +50,8 @@ if (args.includes('--help')) {
     return;
   }
 
-  
-  const password = generatePassword(length);
+  // Generate the password
+  const password = generatePassword(length, includeNumbers);
   console.log(`Generated Password: ${password}`);
   rl.close();
 }
