@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "NickPow",
   "license": "ISC",
-  "description": ""
+  "description": "A Command-Line Interface (CLI) application in Node.js that generates passwords for users based on arguments they provide via flags. "
 }
